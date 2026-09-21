@@ -1,0 +1,738 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananda Kenny Esqiel Bisaratua &mdash; Modern Luxury 3D Portfolio</title>
+    <meta name="description" content="Professional portfolio of Ananda Kenny Esqiel Bisaratua, Bachelor of Information Systems from Gunadarma University. Specializing in Big Data Crypto Research, FinTech QA at Bank Mandiri, and Full Stack Web Architecture.">
+    <meta name="theme-color" content="#060709">
+
+    <!-- Google Fonts: Cinzel (Luxury Serif) & Plus Jakarta Sans (Ultra-modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Three.js CDN for true WebGL 3D Interactive Centerpiece -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Luxury Background Glows -->
+    <div class="luxury-ambient-bg">
+        <div class="ambient-glow glow-top-left"></div>
+        <div class="ambient-glow glow-center-gold"></div>
+        <div class="ambient-glow glow-bottom-right"></div>
+        <div class="ambient-grid-overlay"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar-wrapper">
+        <nav class="navbar glass-panel">
+            <!-- Left: Brand Logo & Status Pill -->
+            <div class="navbar-left">
+                <a href="#home" class="brand-logo" aria-label="Ananda Kenny Home">
+                    <div class="logo-emblem">
+                        <img src="kenny-k-logo.svg" alt="Kenny K Monogram Logo" class="brand-svg">
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-name">MY PORTFOLIO</span>
+                    </div>
+                </a>
+
+                <!-- Availability Status Pill -->
+                <div class="status-indicator-pill">
+                    <span class="status-dot"></span>
+                    <span class="status-label" data-en="Close to Work" data-id="Sedang Bekerja">Close To Work</span>
+                </div>
+            </div>
+
+            <!-- Center: Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-item active" data-en="Home" data-id="Beranda">Home</a></li>
+                <li><a href="#pendidikan" class="nav-item" data-en="Education" data-id="Pendidikan">Education</a></li>
+                <li><a href="#proyek" class="nav-item" data-en="Projects" data-id="Proyek">Projects</a></li>
+                <li><a href="#pengalaman" class="nav-item" data-en="Experience" data-id="Pengalaman">Experience</a></li>
+                <li><a href="#sertifikasi" class="nav-item" data-en="Certifications" data-id="Sertifikasi">Certifications</a></li>
+                <li class="mobile-nav-cta-item"><a href="#kontak" class="nav-item nav-item-cta" data-en="Contact Me" data-id="Hubungi Saya">Contact Me</a></li>
+            </ul>
+
+            <!-- Right: Language Toggle, CTA & Mobile Toggle -->
+            <div class="navbar-actions">
+                <!-- Language Toggle (ID / ENG) -->
+                <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch Language (ENG / ID)" title="Switch Language (ENG / ID)">
+                    <span class="lang-toggle-inner">
+                        <span class="lang-option active" id="langOptEn">ENG</span>
+                        <span class="lang-divider">/</span>
+                        <span class="lang-option" id="langOptId">ID</span>
+                    </span>
+                </button>
+
+                <!-- Desktop Contact CTA -->
+                <a href="#kontak" class="btn-nav-cta" data-en="Contact Me" data-id="Hubungi Saya">Contact Me</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO SECTION: 3D Luxury Focus & Owner Intro -->
+        <section id="home" class="hero-section">
+            <!-- 3D WebGL Canvas Layer -->
+            <div class="webgl-canvas-container" id="webglContainer">
+                <canvas id="hero-3d-canvas"></canvas>
+                <!-- 3D Interaction Badge -->
+                <div class="canvas-3d-hint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    <span data-en="Interactive 3D &middot; Move Cursor" data-id="3D Interaktif &middot; Gerakkan Kursor">Interactive 3D &middot; Move Cursor</span>
+                </div>
+            </div>
+
+            <div class="hero-content-container">
+                <div class="hero-grid">
+                    <!-- Left Hero Content -->
+                    <div class="hero-text-block">
+                        <div class="hero-badge">
+                            <span class="badge-icon">&#10022;</span>
+                            <span data-en="OFFICIAL PORTFOLIO &middot; BACHELOR OF INFORMATION SYSTEMS" data-id="PORTOFOLIO RESMI &middot; SARJANA SISTEM INFORMASI">OFFICIAL PORTFOLIO &middot; BACHELOR OF INFORMATION SYSTEMS</span>
+                        </div>
+
+                        <h1 class="hero-title">
+                            <span class="hero-title-prefix" data-en="Welcome, Ms/Mr" data-id="Selamat Datang">Welcome, Ms/Mr</span>
+                            <span class="hero-title-name gold-gradient-text">Ananda Kenny Esqiel Bisaratua</span>
+                        </h1>
+
+                        <p class="hero-lead" data-en="A Enthusiastic at Cryptocurrency and AI" data-id="Antusias di Bidang Cryptocurrency dan AI">
+                            A Enthusiastic at Cryptocurrency and AI
+                        </p>
+
+                        <!-- Key Attribute Chips -->
+                        <div class="hero-chips">
+                            <span class="luxury-chip">
+                                <span class="chip-dot"></span> <span data-en="AI Enthusiast" data-id="Penggemar AI">AI Enthusiast</span>
+                            </span>
+                            <span class="luxury-chip">
+                                <span class="chip-dot"></span> <span data-en="Technical &amp; Fundamental Analysis" data-id="Analisis Teknikal &amp; Fundamental">Technical &amp; Fundamental Analysis</span>
+                            </span>
+                            <span class="luxury-chip">
+                                <span class="chip-dot"></span> <span data-en="Full Stack Web Architecture (Vibe Coding)" data-id="Arsitektur Web Full Stack (Vibe Coding)">Full Stack Web Architecture (Vibe Coding)</span>
+                            </span>
+                        </div>
+
+                        <!-- CTA Actions -->
+                        <div class="hero-actions">
+                            <a href="#pendidikan" class="btn btn-luxury-primary" id="btnJelajahi">
+                                <span data-en="Explore Portfolio" data-id="Jelajahi Portofolio">Explore Portfolio</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                            </a>
+                            <a href="#kontak" class="btn btn-luxury-secondary">
+                                <span data-en="Contact Me" data-id="Hubungi Saya">Contact Me</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Portrait Frame -->
+                    <div class="hero-portrait-wrapper">
+                        <div class="luxury-portrait-card">
+                            <div class="portrait-aura"></div>
+                            <div class="portrait-bevel-frame">
+                                <div class="portrait-inner">
+                                    <img src="KennyFoto.jpg" alt="Official Portrait of Ananda Kenny Esqiel Bisaratua" class="portrait-img">
+                                    <div class="portrait-gradient-overlay"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Card Tag 1 -->
+                            <div class="floating-badge-tag tag-top-right glass-card">
+                                <div class="badge-icon-gold">&#127963;&#65039;</div>
+                                <div class="badge-tag-info">
+                                    <span class="tag-title">Gunadarma</span>
+                                    <span class="tag-sub" data-en="B.S. Information Systems" data-id="S.Kom. Sistem Informasi">B.S. Information Systems</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating Card Tag 2 -->
+                            <div class="floating-badge-tag tag-bottom-left glass-card">
+                                <div class="badge-icon-gold">&#128188;</div>
+                                <div class="badge-tag-info">
+                                    <span class="tag-title" data-en="Freelance" data-id="Lepas">Freelance</span>
+                                    <span class="tag-sub" data-en="Web Developer & Junior Trader" data-id="Pengembang Web & Trader Pemula">Web Developer & Junior Trader</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="hero-scroll-prompt">
+                    <a href="#pendidikan" class="scroll-mouse-link" aria-label="Scroll Down">
+                        <div class="scroll-mouse">
+                            <div class="scroll-wheel"></div>
+                        </div>
+                        <span class="scroll-text" data-en="SCROLL DOWN" data-id="GULIR KE BAWAH">SCROLL DOWN</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: EDUCATION -->
+        <section id="pendidikan" class="section-container education-section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-en="ACADEMIC &middot; EDUCATION" data-id="AKADEMIK &middot; PENDIDIKAN">ACADEMIC &middot; EDUCATION</span>
+                <h2 class="section-heading" data-en="Academic &amp; Campus Life" data-id="Akademik &amp; Kehidupan Kampus">Academic &amp; Campus Life</h2>
+                <p class="section-subheading" data-en="Cultivating rigorous technical competencies in software engineering methodologies, big data analytics, and enterprise systems at a premier institution." data-id="Mengembangkan kompetensi teknis yang ketat dalam metodologi rekayasa perangkat lunak, analitik big data, dan sistem enterprise di institusi terkemuka.">
+                    Cultivating rigorous technical competencies in software engineering methodologies, big data analytics, and enterprise systems at a premier institution.
+                </p>
+            </div>
+
+            <div class="education-showcase-grid">
+                <!-- Main Building Feature Card (Foto Gedung G) -->
+                <div class="education-feature-card glass-card">
+                    <div class="feature-card-media">
+                        <img src="Gedung-Gunadarma.jpg" alt="Campus Building G, Gunadarma University Depok Margonda" class="building-hero-image">
+                        <div class="media-overlay-gradient"></div>
+                        <div class="media-badge-pill">
+                            <span class="pill-icon">&#128205;</span>
+                            <span data-en="Depok Campus, Jl. Margonda Raya" data-id="Kampus Depok, Jl. Margonda Raya">Depok Campus, Jl. Margonda Raya</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card-body">
+                        <div class="institution-meta">
+                            <span class="institution-type" data-en="Private University" data-id="Universitas Swasta">Private University</span>
+                            <span class="graduation-status" data-en="Graduate" data-id="Lulusan">Graduate</span>
+                        </div>
+                        <h3 class="institution-name" data-en="Gunadarma University" data-id="Universitas Gunadarma">Gunadarma University</h3>
+                        <h4 class="major-name gold-gradient-text" data-en="Faculty of Informatics and Computer Science" data-id="Fakultas Ilmu Komputer dan Teknologi Informasi">Faculty of Informatics and Computer Science</h4>
+                        <p class="major-description" data-en="combining computer science, business, and management to design technology solutions tailored to company needs." data-id="menggabungkan ilmu komputer, bisnis, dan manajemen untuk merancang solusi teknologi yang disesuaikan dengan kebutuhan perusahaan.">
+                            combining computer science, business, and management to design technology solutions tailored to company needs.
+                        </p>
+
+                        <div class="curriculum-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#10022;</span>
+                                <span data-en="Software Quality Assurance &amp; Testing Standards" data-id="Jaminan Kualitas Perangkat Lunak &amp; Standar Pengujian">Software Quality Assurance &amp; Testing Standards</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#10022;</span>
+                                <span data-en="Big Data Mining, Machine Learning &amp; System Analyst" data-id="Big Data Mining, Machine Learning &amp; Analis Sistem">Big Data Mining, Machine Learning &amp; System Analyst</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#10022;</span>
+                                <span data-en="Full Stack Web Development &amp; Database Architecture" data-id="Pengembangan Web Full Stack &amp; Arsitektur Basis Data">Full Stack Web Development &amp; Database Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-Photo Campus Life Carousel & Interactive Gallery -->
+                <div class="campus-gallery-container glass-card">
+                    <div class="gallery-header-bar">
+                        <div class="gallery-title-group">
+                            <span class="gallery-mini-badge" data-en="CAMPUS DOCUMENTATION" data-id="DOKUMENTASI KAMPUS">CAMPUS DOCUMENTATION</span>
+                            <h3 class="gallery-title" data-en="Campus Life Photo Gallery" data-id="Galeri Foto Kehidupan Kampus">Campus Life Photo Gallery</h3>
+                        </div>
+                        <div class="carousel-nav-arrows">
+                            <button class="carousel-arrow-btn" id="eduPrevBtn" aria-label="Previous Photo">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-arrow-btn" id="eduNextBtn" aria-label="Next Photo">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Active Slide Viewer -->
+                    <div class="campus-carousel-viewport">
+                        <div class="carousel-slides-track" id="eduCarouselTrack">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active" data-index="0">
+                                <div class="slide-image-wrap">
+                                    <img src="education-photo-1.jpg" alt="Academic Collaboration at Gunadarma University 1" class="slide-img">
+                                </div>
+                                <div class="slide-caption">
+                                    <span class="slide-number" data-en="Photo 01 / 03" data-id="Foto 01 / 03">Photo 01 / 03</span>
+                                    <p class="slide-desc" data-en="Bachelor's Degree Graduation." data-id="Wisuda Sarjana.">Bachelor's Degree Graduation.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide" data-index="1">
+                                <div class="slide-image-wrap">
+                                    <img src="education-photo-2.jpg" alt="Computer Laboratory Practicum at Gunadarma University 2" class="slide-img">
+                                </div>
+                                <div class="slide-caption">
+                                    <span class="slide-number" data-en="Photo 02 / 03" data-id="Foto 02 / 03">Photo 02 / 03</span>
+                                    <p class="slide-desc" data-en="Classmates (Semesters 3–8)" data-id="Teman Sekelas (Semester 3–8)">Classmates (Semesters 3–8)</p>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide" data-index="2">
+                                <div class="slide-image-wrap">
+                                    <img src="education-photo-3.jpg" alt="Capstone Project &amp; Computing Analysis at Gunadarma University 3" class="slide-img">
+                                </div>
+                                <div class="slide-caption">
+                                    <span class="slide-number" data-en="Photo 03 / 03" data-id="Foto 03 / 03">Photo 03 / 03</span>
+                                    <p class="slide-desc" data-en="Comprehensive Examination." data-id="Ujian Komprehensif.">Comprehensive Examination.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators" id="eduIndicators">
+                        <button class="indicator-dot active" data-slide="0" aria-label="Slide 1"></button>
+                        <button class="indicator-dot" data-slide="1" aria-label="Slide 2"></button>
+                        <button class="indicator-dot" data-slide="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PROJECTS & RESEARCH -->
+        <section id="proyek" class="section-container projects-section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-en="FEATURED PORTFOLIO &middot; RESEARCH" data-id="PORTOFOLIO UNGGULAN &middot; RISET">FEATURED PORTFOLIO &middot; RESEARCH</span>
+                <h2 class="section-heading" data-en="Featured Projects &amp; Research" data-id="Proyek &amp; Riset Unggulan">Featured Projects &amp; Research</h2>
+                <p class="section-subheading" data-en="Each project includes a dedicated results page preserving the original aspect ratio for PDF files and screenshots, or providing direct access to website links." data-id="Setiap proyek memiliki halaman hasil khusus yang mempertahankan rasio aspek asli untuk file PDF dan tangkapan layar, atau menyediakan akses langsung ke tautan situs web.">
+                    Each project includes a dedicated results page preserving the original aspect ratio for PDF files and screenshots, or providing direct access to website links.
+                </p>
+            </div>
+
+            <div class="projects-asymmetric-grid">
+
+                <!-- PROJECT 1: Scientific Research (Featured Large Card) -->
+                <article class="project-card project-card-featured glass-card" data-project-id="scientific-research">
+                    <div class="card-glass-glow"></div>
+                    <div class="project-header-badge-row">
+                        <span class="project-role-badge badge-gold">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            <span data-en="Scientific Research (Lead Thesis)" data-id="Riset Ilmiah (Skripsi Utama)">Scientific Research (Lead Thesis)</span>
+                        </span>
+                        <span class="project-format-pill">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span data-en="Official PDF Document (1.76 MB)" data-id="Dokumen PDF Resmi (1.76 MB)">Official PDF Document (1.76 MB)</span>
+                        </span>
+                    </div>
+
+                    <h3 class="project-main-title" data-en="Big Data Analysis to Detect Cryptocurrency Price Movement Patterns and Trends (A Case Study of the Altcoin Market)." data-id="Analisis Big Data untuk Mendeteksi Pola Pergerakan Harga Cryptocurrency dan Tren (Studi Kasus Pasar Altcoin).">
+                        Big Data Analysis to Detect Cryptocurrency Price Movement Patterns and Trends (A Case Study of the Altcoin Market).
+                    </h3>
+
+                    <p class="project-sub-title" data-en="Analyzing large-scale cryptocurrency market transaction data using machine learning algorithms and comprehensive trend visualizations to accurately detect recurring altcoin price cycles and market behaviors." data-id="Menganalisis data transaksi pasar cryptocurrency berskala besar menggunakan algoritma machine learning dan visualisasi tren komprehensif untuk mendeteksi siklus harga altcoin yang berulang dan perilaku pasar secara akurat.">
+                        Analyzing large-scale cryptocurrency market transaction data using machine learning algorithms and comprehensive trend visualizations to accurately detect recurring altcoin price cycles and market behaviors.
+                    </p>
+
+                    <div class="project-tech-tags">
+                        <span class="tech-tag">Big Data Mining</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Cryptocurrency &amp; Altcoins</span>
+                        <span class="tech-tag">Time Series Analysis</span>
+                        <span class="tech-tag">Python &amp; Data Analytics</span>
+                    </div>
+
+                    <div class="project-card-footer">
+                        <button class="btn btn-luxury-card-action" onclick="openProjectModal('scientific-research')">
+                            <span data-en="View Research Document (PDF)" data-id="Lihat Dokumen Riset (PDF)">View Research Document (PDF)</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- PROJECT 2: Project Manager - Malau Website -->
+                <article class="project-card glass-card" data-project-id="website-malau">
+                    <div class="card-glass-glow"></div>
+                    <div class="project-header-badge-row">
+                        <span class="project-role-badge badge-blue">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span data-en="Project Manager (In Progress)" data-id="Manajer Proyek (Dalam Proses)">Project Manager (In Progress)</span>
+                        </span>
+                        <span class="project-format-pill" data-en="Community Website Portal" data-id="Portal Website Komunitas">Community Website Portal</span>
+                    </div>
+
+                    <h3 class="project-main-title" data-en="Batak Malau Boru &amp; Bere Family Genealogy Website" data-id="Website Silsilah Keluarga Batak Malau Boru &amp; Bere">
+                        Batak Malau Boru &amp; Bere Family Genealogy Website
+                    </h3>
+
+                    <p class="project-sub-title" data-en="Directing the end-to-end development and management of a comprehensive family genealogy tree (Tarombo) and community portal for the Batak Malau lineage across the Greater Jabodetabek region." data-id="Mengarahkan pengembangan dan manajemen end-to-end pohon silsilah keluarga komprehensif (Tarombo) dan portal komunitas untuk keturunan Batak Malau di seluruh wilayah Jabodetabek.">
+                        Directing the end-to-end development and management of a comprehensive family genealogy tree (Tarombo) and community portal for the Batak Malau lineage across the Greater Jabodetabek region.
+                    </p>
+
+                    <div class="project-tech-tags">
+                        <span class="tech-tag" data-en="Project Management" data-id="Manajemen Proyek">Project Management</span>
+                        <span class="tech-tag">Genealogy Tree (Tarombo)</span>
+                        <span class="tech-tag" data-en="Community Portal" data-id="Portal Komunitas">Community Portal</span>
+                        <span class="tech-tag" data-en="Web Architecture" data-id="Arsitektur Web">Web Architecture</span>
+                    </div>
+
+                    <div class="project-card-footer">
+                        <button class="btn btn-luxury-card-action" onclick="openProjectModal('website-malau')">
+                            <span data-en="View Results &amp; Prototype" data-id="Lihat Hasil &amp; Prototipe">View Results &amp; Prototype</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- PROJECT 3: Full Stack Developer - Trading Journal -->
+                <article class="project-card glass-card" data-project-id="trading-journal">
+                    <div class="card-glass-glow"></div>
+                    <div class="project-header-badge-row">
+                        <span class="project-role-badge badge-gold">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            <span data-en="Full Stack Developer (Personal Project &middot; In Progress)" data-id="Pengembang Full Stack (Proyek Pribadi &middot; Dalam Proses)">Full Stack Developer (Personal Project &middot; In Progress)</span>
+                        </span>
+                        <span class="project-format-pill" data-en="FinTech Application" data-id="Aplikasi FinTech">FinTech Application</span>
+                    </div>
+
+                    <h3 class="project-main-title" data-en="Trading Journal X1 &mdash; Comprehensive Trading Journal" data-id="Trading Journal X1 &mdash; Jurnal Trading Komprehensif">
+                        Trading Journal X1 &mdash; Comprehensive Trading Journal
+                    </h3>
+
+                    <p class="project-sub-title" data-en="Architecting an advanced trading journal application designed to instill discipline throughout the trader's journey, track behavioral psychology, and analyze portfolio return on investment in real time." data-id="Merancang aplikasi jurnal trading canggih yang dirancang untuk menanamkan disiplin sepanjang perjalanan trader, melacak psikologi perilaku, dan menganalisis return on investment portofolio secara real time.">
+                        Architecting an advanced trading journal application designed to instill discipline throughout the trader's journey, track behavioral psychology, and analyze portfolio return on investment in real time.
+                    </p>
+
+                    <div class="project-tech-tags">
+                        <span class="tech-tag" data-en="Full Stack Development" data-id="Pengembangan Full Stack">Full Stack Development</span>
+                        <span class="tech-tag" data-en="Trade Analytics Engine" data-id="Mesin Analitik Trading">Trade Analytics Engine</span>
+                        <span class="tech-tag" data-en="Risk Management" data-id="Manajemen Risiko">Risk Management</span>
+                        <span class="tech-tag" data-en="Portfolio Tracking" data-id="Pelacakan Portofolio">Portfolio Tracking</span>
+                    </div>
+
+                    <div class="project-card-footer">
+                        <button class="btn btn-luxury-card-action" onclick="openProjectModal('trading-journal')">
+                            <span data-en="View Results &amp; Architecture" data-id="Lihat Hasil &amp; Arsitektur">View Results &amp; Architecture</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- PROJECT 4: Full Stack Developer - Rental Housing Platform -->
+                <article class="project-card glass-card" data-project-id="kos-kosan">
+                    <div class="card-glass-glow"></div>
+                    <div class="project-header-badge-row">
+                        <span class="project-role-badge badge-green">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span data-en="Full Stack Developer (In Progress)" data-id="Pengembang Full Stack (Dalam Proses)">Full Stack Developer (In Progress)</span>
+                        </span>
+                        <span class="project-format-pill" data-en="Property Management" data-id="Manajemen Properti">Property Management</span>
+                    </div>
+
+                    <h3 class="project-main-title" data-en="Rental Housing &amp; Boarding House Business Platform" data-id="Platform Bisnis Rumah Sewa &amp; Kos-Kosan">
+                        Rental Housing &amp; Boarding House Business Platform
+                    </h3>
+
+                    <p class="project-sub-title" data-en="Enabling prospective tenants to seamlessly browse transparent pricing, amenities, precise locations, and instant live vacancy availability (whether units are occupied or vacant)." data-id="Memungkinkan calon penghuni untuk dengan mudah menelusuri harga transparan, fasilitas, lokasi tepat, dan ketersediaan unit kosong secara langsung (apakah unit terisi atau kosong).">
+                        Enabling prospective tenants to seamlessly browse transparent pricing, amenities, precise locations, and instant live vacancy availability (whether units are occupied or vacant).
+                    </p>
+
+                    <div class="project-tech-tags">
+                        <span class="tech-tag" data-en="Full Stack System" data-id="Sistem Full Stack">Full Stack System</span>
+                        <span class="tech-tag" data-en="Real-Time Vacancy Engine" data-id="Mesin Ketersediaan Real-Time">Real-Time Vacancy Engine</span>
+                        <span class="tech-tag" data-en="Interactive Catalog" data-id="Katalog Interaktif">Interactive Catalog</span>
+                        <span class="tech-tag" data-en="Booking Flow" data-id="Alur Pemesanan">Booking Flow</span>
+                    </div>
+
+                    <div class="project-card-footer">
+                        <button class="btn btn-luxury-card-action" onclick="openProjectModal('kos-kosan')">
+                            <span data-en="View Property Platform" data-id="Lihat Platform Properti">View Property Platform</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SECTION: WORK EXPERIENCE -->
+        <section id="pengalaman" class="section-container work-section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-en="PROFESSIONAL EXPERIENCE" data-id="PENGALAMAN PROFESIONAL">PROFESSIONAL EXPERIENCE</span>
+                <h2 class="section-heading" data-en="Professional Career Experience" data-id="Pengalaman Karier Profesional">Professional Career Experience</h2>
+                <p class="section-subheading" data-en="Proven enterprise experience in quality assurance for wholesale digital banking platforms at one of Southeast Asia's largest financial institutions." data-id="Pengalaman enterprise yang terbukti dalam jaminan kualitas platform perbankan digital wholesale di salah satu institusi keuangan terbesar di Asia Tenggara.">
+                    Proven enterprise experience in quality assurance for wholesale digital banking platforms at one of Southeast Asia's largest financial institutions.
+                </p>
+            </div>
+
+            <div class="work-experience-card glass-card">
+                <div class="work-card-header">
+                    <div class="company-logo-badge">
+                        <span class="bank-mandiri-logo-text">MANDIRI</span>
+                    </div>
+                    <div class="work-header-details">
+                        <div class="work-role-pill" data-en="Quality Assurance (QA)" data-id="Jaminan Kualitas (QA)">Quality Assurance (QA)</div>
+                        <h3 class="work-company-name">PT Bank Mandiri (Persero) Tbk</h3>
+                        <h4 class="work-project-title gold-gradient-text" data-en="Project Kopra by Mandiri (Wholesale Digital Super Platform)" data-id="Proyek Kopra by Mandiri (Platform Digital Super Wholesale)">Project Kopra by Mandiri (Wholesale Digital Super Platform)</h4>
+                    </div>
+                </div>
+
+                <div class="work-responsibilities-grid">
+                    <div class="responsibility-box">
+                        <div class="resp-icon">&#129514;</div>
+                        <h4 data-en="Manual &amp; UAT Testing" data-id="Pengujian Manual &amp; UAT">Manual &amp; UAT Testing</h4>
+                        <p data-en="Executed comprehensive manual testing for wholesale banking features and modules within Project Kopra, including User Acceptance Testing (UAT) and rigorous regression cycles to guarantee production readiness before enterprise deployment." data-id="Melaksanakan pengujian manual komprehensif untuk fitur dan modul perbankan wholesale dalam Proyek Kopra, termasuk User Acceptance Testing (UAT) dan siklus regresi ketat untuk menjamin kesiapan produksi sebelum deployment enterprise.">Executed comprehensive manual testing for wholesale banking features and modules within Project Kopra, including User Acceptance Testing (UAT) and rigorous regression cycles to guarantee production readiness before enterprise deployment.</p>
+                    </div>
+                    <div class="responsibility-box">
+                        <div class="resp-icon">&#128203;</div>
+                        <h4 data-en="Test Case Design &amp; Documentation" data-id="Desain Kasus Uji &amp; Dokumentasi">Test Case Design &amp; Documentation</h4>
+                        <p data-en="Designed, structured, and maintained detailed test scenarios and test cases, systematically generating structured test execution reports within the Atlassian JIRA ecosystem." data-id="Merancang, menyusun, dan memelihara skenario uji dan kasus uji terperinci, menghasilkan laporan eksekusi pengujian terstruktur secara sistematis dalam ekosistem Atlassian JIRA.">Designed, structured, and maintained detailed test scenarios and test cases, systematically generating structured test execution reports within the Atlassian JIRA ecosystem.</p>
+                    </div>
+                    <div class="responsibility-box">
+                        <div class="resp-icon">&#128030;</div>
+                        <h4 data-en="Defect Tracking in JIRA" data-id="Pelacakan Defek di JIRA">Defect Tracking in JIRA</h4>
+                        <p data-en="Documented, prioritized severity levels, and tracked software defect lifecycles from initial discovery through re-testing, resolution verification, and ticket sign-off in JIRA." data-id="Mendokumentasikan, memprioritaskan tingkat keparahan, dan melacak siklus hidup defek perangkat lunak dari penemuan awal hingga pengujian ulang, verifikasi resolusi, dan penandatanganan tiket di JIRA.">Documented, prioritized severity levels, and tracked software defect lifecycles from initial discovery through re-testing, resolution verification, and ticket sign-off in JIRA.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: CERTIFICATIONS -->
+        <section id="sertifikasi" class="section-container certifications-section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-en="VALIDATED COMPETENCIES" data-id="KOMPETENSI TERVALIDASI">VALIDATED COMPETENCIES</span>
+                <h2 class="section-heading" data-en="Official Certifications &amp; Credentials" data-id="Sertifikasi &amp; Kredensial Resmi">Official Certifications &amp; Credentials</h2>
+                <p class="section-subheading" data-en="Accredited credentials awarded by Gunadarma University verifying expertise in software design, modern programming languages, and enterprise database systems." data-id="Kredensial terakreditasi yang diberikan oleh Universitas Gunadarma memverifikasi keahlian dalam desain perangkat lunak, bahasa pemrograman modern, dan sistem basis data enterprise.">
+                    Accredited credentials awarded by Gunadarma University verifying expertise in software design, modern programming languages, and enterprise database systems.
+                </p>
+            </div>
+
+            <div class="certifications-grid">
+
+                <!-- CERTIFICATE 1 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-image-box" onclick="openImageLightbox('cert-photo-1.jpg', 'Certification: Designing Software &mdash; Gunadarma University')">
+                        <img src="cert-photo-1.jpg" alt="Designing Software Certificate, Gunadarma University" class="cert-img" loading="lazy">
+                        <div class="cert-zoom-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span data-en="Enlarge" data-id="Perbesar">Enlarge</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-meta-row">
+                            <span class="cert-issuer-badge" data-en="Gunadarma University" data-id="Universitas Gunadarma">Gunadarma University</span>
+                            <span class="cert-period" data-en="May &ndash; June 2025" data-id="Mei &ndash; Juni 2025">May &ndash; June 2025</span>
+                        </div>
+                        <h3 class="cert-title" data-en="Designing Software" data-id="Perancangan Perangkat Lunak">Designing Software</h3>
+                        <p class="cert-scope" data-en="Core competencies: Software Structures Design, Software Components Architecture, User Interface (UI) Design, and User Experience (UX) Systems." data-id="Kompetensi inti: Desain Struktur Perangkat Lunak, Arsitektur Komponen Perangkat Lunak, Desain Antarmuka Pengguna (UI), dan Sistem Pengalaman Pengguna (UX).">
+                            Core competencies: Software Structures Design, Software Components Architecture, User Interface (UI) Design, and User Experience (UX) Systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATE 2 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-image-box" onclick="openImageLightbox('cert-photo-2.jpg', 'Certification: JavaScript Programming Language Fundamentals &mdash; Gunadarma University')">
+                        <img src="cert-photo-2.jpg" alt="JavaScript Fundamentals Certificate, Gunadarma University" class="cert-img" loading="lazy">
+                        <div class="cert-zoom-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span data-en="Enlarge" data-id="Perbesar">Enlarge</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-meta-row">
+                            <span class="cert-issuer-badge" data-en="Gunadarma University" data-id="Universitas Gunadarma">Gunadarma University</span>
+                            <span class="cert-period">November 2023</span>
+                        </div>
+                        <h3 class="cert-title" data-en="JavaScript Programming Language Fundamentals" data-id="Dasar-Dasar Bahasa Pemrograman JavaScript">JavaScript Programming Language Fundamentals</h3>
+                        <p class="cert-scope" data-en="Core competencies: JavaScript Syntax, Variables, Data Types, Scope, Operators, Arrays, Decision Logic, Loops, Object-Oriented Programming (OOP), Properties &amp; Methods, and Contextual Keyword 'this'." data-id="Kompetensi inti: Sintaks JavaScript, Variabel, Tipe Data, Scope, Operator, Array, Logika Keputusan, Perulangan, Pemrograman Berorientasi Objek (OOP), Properti &amp; Metode, dan Kata Kunci Kontekstual 'this'.">
+                            Core competencies: JavaScript Syntax, Variables, Data Types, Scope, Operators, Arrays, Decision Logic, Loops, Object-Oriented Programming (OOP), Properties &amp; Methods, and Contextual Keyword 'this'.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATE 3 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-image-box" onclick="openImageLightbox('cert-photo-3.jpg', 'Certification: Fundamental Desktop Programming &mdash; Gunadarma University')">
+                        <img src="cert-photo-3.jpg" alt="Fundamental Desktop Programming Certificate, Gunadarma University" class="cert-img" loading="lazy">
+                        <div class="cert-zoom-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span data-en="Enlarge" data-id="Perbesar">Enlarge</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-meta-row">
+                            <span class="cert-issuer-badge" data-en="Gunadarma University" data-id="Universitas Gunadarma">Gunadarma University</span>
+                            <span class="cert-period" data-en="February 2024" data-id="Februari 2024">February 2024</span>
+                        </div>
+                        <h3 class="cert-title" data-en="Fundamental Desktop Programming" data-id="Pemrograman Desktop Fundamental">Fundamental Desktop Programming</h3>
+                        <p class="cert-scope" data-en="Core competencies: Advanced Java Programming, Conditional Logic, Loop Control, Array Structures &amp; Window Desktop GUI, and Enterprise Oracle PL/SQL Databases." data-id="Kompetensi inti: Pemrograman Java Lanjutan, Logika Kondisional, Kontrol Perulangan, Struktur Array &amp; GUI Desktop Window, dan Basis Data Oracle PL/SQL Enterprise.">
+                            Core competencies: Advanced Java Programming, Conditional Logic, Loop Control, Array Structures &amp; Window Desktop GUI, and Enterprise Oracle PL/SQL Databases.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: CONTACT ME (STRICTLY STATIC NO FORM) -->
+        <section id="kontak" class="section-container contact-section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-en="GET IN TOUCH" data-id="HUBUNGI KAMI">GET IN TOUCH</span>
+                <h2 class="section-heading" data-en="Let's Connect Directly" data-id="Mari Terhubung Langsung">Let's Connect Directly</h2>
+                <p class="section-subheading" data-en="Official contact channels for recruiters, industry partners, or professional discussions regarding career opportunities and technical engineering inquiries." data-id="Saluran kontak resmi untuk perekrut, mitra industri, atau diskusi profesional mengenai peluang karier dan pertanyaan teknik.">
+                    Official contact channels for recruiters, industry partners, or professional discussions regarding career opportunities and technical engineering inquiries.
+                </p>
+            </div>
+
+            <div class="contact-cards-grid">
+
+                <!-- WhatsApp Card -->
+                <div class="contact-luxury-card glass-card">
+                    <div class="contact-icon-bubble whatsapp-bubble">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.974-1.392C8.423 21.493 10.15 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.067c-1.637 0-3.15-.472-4.432-1.285l-.317-.2-2.951.826.837-2.874-.21-.334C4.088 14.869 3.6 13.484 3.6 12c0-4.632 3.768-8.4 8.4-8.4s8.4 3.768 8.4 8.4-3.768 8.4-8.4 8.4z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-card-info">
+                        <span class="contact-type-label" data-en="Direct WhatsApp" data-id="WhatsApp Langsung">Direct WhatsApp</span>
+                        <h3 class="contact-main-val">+62 877-2005-2003</h3>
+                        <p class="contact-hint-text" data-en="Available for interview calls and direct messaging." data-id="Tersedia untuk panggilan wawancara dan pesan langsung.">Available for interview calls and direct messaging.</p>
+                    </div>
+                    <div class="contact-btn-group">
+                        <a href="https://wa.me/6287720052003" target="_blank" rel="noopener noreferrer" class="btn btn-luxury-primary">
+                            <span data-en="Chat on WhatsApp" data-id="Chat di WhatsApp">Chat on WhatsApp</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                        </a>
+                        <button class="btn btn-luxury-secondary copy-btn" onclick="copyToClipboard('+6287720052003', 'WhatsApp number copied to clipboard!')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span data-en="Copy Number" data-id="Salin Nomor">Copy Number</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Email Card -->
+                <div class="contact-luxury-card glass-card">
+                    <div class="contact-icon-bubble email-bubble">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-card-info">
+                        <span class="contact-type-label" data-en="Official Email" data-id="Email Resmi">Official Email</span>
+                        <h3 class="contact-main-val contact-email-val">malaukendui@gmail.com</h3>
+                        <p class="contact-hint-text" data-en="Prompt responses for interview invitations or formal inquiries." data-id="Respons cepat untuk undangan wawancara atau pertanyaan formal.">Prompt responses for interview invitations or formal inquiries.</p>
+                    </div>
+                    <div class="contact-btn-group">
+                        <a href="mailto:malaukendui@gmail.com" class="btn btn-luxury-primary">
+                            <span data-en="Send Email" data-id="Kirim Email">Send Email</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </a>
+                        <button class="btn btn-luxury-secondary copy-btn" onclick="copyToClipboard('malaukendui@gmail.com', 'Email address copied to clipboard!')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span data-en="Copy Email" data-id="Salin Email">Copy Email</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Location & Notice Card -->
+                <div class="contact-luxury-card glass-card location-notice-card">
+                    <div class="contact-icon-bubble map-bubble">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="contact-card-info">
+                        <span class="contact-type-label" data-en="Primary Location" data-id="Lokasi Utama">Primary Location</span>
+                        <h3 class="contact-main-val" data-en="EAST JAKARTA, ID" data-id="JAKARTA TIMUR, ID">EAST JAKARTA, ID</h3>
+                        <p class="contact-hint-text" data-en="Available for On-site (WFO), Hybrid, or Full Remote arrangements." data-id="Tersedia untuk pengaturan On-site (WFO), Hybrid, atau Kerja Jarak Jauh penuh.">Available for On-site (WFO), Hybrid, or Full Remote arrangements.</p>
+                    </div>
+                    <div class="contact-status-badge">
+                        <span class="pulse-green"></span>
+                        <span data-en="Actively Open to Career Opportunities" data-id="Aktif Terbuka untuk Peluang Karier">Actively Open to Career Opportunities</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-brand-row">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="kenny-k-logo.svg" alt="Kenny K Logo" class="brand-svg-mini">
+                    </div>
+                    <div class="footer-title">
+                        <span class="footer-owner-name">ANANDA KENNY ESQIEL BISARATUA</span>
+                        <span class="footer-owner-sub" data-en="Bachelor of Information Systems &middot; Gunadarma University" data-id="Sarjana Sistem Informasi &middot; Universitas Gunadarma">Bachelor of Information Systems &middot; Gunadarma University</span>
+                    </div>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="#home" class="back-top-btn" aria-label="Back to Top">
+                        <span data-en="Back to Top" data-id="Kembali ke Atas">Back to Top</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom-row">
+                <p class="copyright-text" data-en="&copy; 2026 Ananda Kenny Esqiel Bisaratua. All Rights Reserved." data-id="&copy; 2026 Ananda Kenny Esqiel Bisaratua. Hak Cipta Dilindungi.">
+                    &copy; 2026 Ananda Kenny Esqiel Bisaratua. All Rights Reserved.
+                </p>
+                <p class="footer-designer-credit" data-en="Engineered with Modern 3D Visuals &amp; Precision Craftsmanship." data-id="Dibangun dengan Visual 3D Modern &amp; Keahlian Presisi.">
+                    Engineered with Modern 3D Visuals &amp; Precision Craftsmanship.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DEDICATED PROJECT RESULT MODAL SYSTEM (Preserves aspect ratios & interactive files) -->
+    <div id="projectResultModal" class="luxury-modal-container" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" onclick="closeProjectModal()"></div>
+        <div class="modal-window glass-panel">
+            <div class="modal-window-header">
+                <div class="modal-badge-group">
+                    <span class="modal-role-pill" id="modalProjectRole">Project Role</span>
+                    <span class="modal-type-pill" id="modalResultType">Result Format</span>
+                </div>
+                <button class="modal-close-icon-btn" onclick="closeProjectModal()" aria-label="Close Modal Window">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="modal-window-body" id="modalWindowBody">
+                <!-- Content injected dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- IMAGE LIGHTBOX MODAL (For Certifications & Work Photos) -->
+    <div id="imageLightboxModal" class="luxury-modal-container image-lightbox-container" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" onclick="closeImageLightbox()"></div>
+        <div class="lightbox-content-box">
+            <button class="lightbox-close-btn" onclick="closeImageLightbox()" aria-label="Close Image Viewer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="lightbox-img-wrapper">
+                <img id="lightboxImage" src="" alt="Full Resolution Image">
+            </div>
+            <div class="lightbox-caption-bar" id="lightboxCaption">
+                Photo Caption
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="luxuryToast" class="luxury-toast glass-panel" aria-live="polite">
+        <div class="toast-icon">&#10003;</div>
+        <div class="toast-message" id="toastMessage">Text copied to clipboard successfully</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

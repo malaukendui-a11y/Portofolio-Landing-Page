@@ -16,8 +16,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Paint the loader immediately so the page never flashes underneath */
+        body.is-loading { overflow: hidden; height: 100dvh; }
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #0a0908;
+        }
+    </style>
 </head>
-<body>
+<body class="is-loading">
+
+    <!-- 3D ENTRY LOADER: brushed-metal control knob with gold LED ring -->
+    <div id="pageLoader" class="page-loader" role="status" aria-live="polite" aria-busy="true" aria-label="Loading portfolio">
+        <canvas id="loader-3d-canvas" class="loader-canvas"></canvas>
+        <div class="loader-hud">
+            <p class="loader-kicker" data-en="Entering Portfolio" data-id="Memasuki Portofolio">Entering Portfolio</p>
+            <p class="loader-percent" id="loaderPercent">0%</p>
+        </div>
+    </div>
+
 
     <!-- Ambient Luxury Background Glows -->
     <div class="luxury-ambient-bg">

@@ -66,6 +66,92 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body.is-loading {
+    overflow: hidden;
+    height: 100dvh;
+}
+
+/* ==========================================================================
+   3D PAGE LOADER — brushed metal knob + gold LED ring
+   ========================================================================== */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at 42% 32%, #2c2618 0%, #14120e 42%, #0a0908 78%);
+    transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-loader.is-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.loader-hud {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    transform: translate(-50%, 248px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.loader-kicker {
+    font-family: var(--font-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.78;
+}
+
+.loader-percent {
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    min-width: 4ch;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-loader {
+        transition-duration: 0.2s;
+    }
+}
+
+@media (max-width: 640px) {
+    .loader-hud {
+        transform: translate(-50%, 196px);
+    }
+
+    .loader-percent {
+        font-size: 1.15rem;
+    }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;

@@ -5,6 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPageLoader();
     initThreeJsHero();
     initNavbarScroll();
     initCampusCarousel();
@@ -12,6 +13,335 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initLanguageSwitcher();
 });
+
+/* ==========================================================================
+   0. 3D ENTRY LOADER (brushed-metal knob + gold LED ring)
+   ========================================================================== */
+function initPageLoader() {
+    const overlay = document.getElementById('pageLoader');
+    const canvas = document.getElementById('loader-3d-canvas');
+    const percentEl = document.getElementById('loaderPercent');
+    if (!overlay) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const minDisplayMs = reduceMotion ? 400 : 2200;
+    const hardTimeoutMs = 8000;
+    const startedAt = performance.now();
+
+    let visualProgress = 0;
+    let targetProgress = 8;
+    let pageReady = document.readyState === 'complete';
+    let finished = false;
+    let progressRafId = 0;
+    let sceneRafId = 0;
+    let renderer = null;
+    let ledMeshes = [];
+    let knobGroup = null;
+    let sceneDisposed = false;
+
+    const images = Array.from(document.images);
+    const imageTotal = Math.max(images.length, 1);
+    let imagesLoaded = 0;
+
+    function markImageDone() {
+        imagesLoaded += 1;
+        if (!pageReady) {
+            targetProgress = Math.min(88, 12 + (imagesLoaded / imageTotal) * 70);
+        }
+    }
+
+    images.forEach((img) => {
+        if (img.complete) {
+            markImageDone();
+        } else {
+            img.addEventListener('load', markImageDone, { once: true });
+            img.addEventListener('error', markImageDone, { once: true });
+        }
+    });
+
+    window.addEventListener('load', () => {
+        pageReady = true;
+        targetProgress = 100;
+    }, { once: true });
+
+    if (pageReady) {
+        targetProgress = 100;
+    }
+
+    function createBrushedMetalTexture() {
+        const size = 512;
+        const c = document.createElement('canvas');
+        c.width = size;
+        c.height = size;
+        const ctx = c.getContext('2d');
+
+        const radial = ctx.createRadialGradient(size / 2, size / 2, 8, size / 2, size / 2, size / 2);
+        radial.addColorStop(0, '#cfcfd6');
+        radial.addColorStop(0.22, '#b4b4bc');
+        radial.addColorStop(0.5, '#8e8e98');
+        radial.addColorStop(0.78, '#6a6a74');
+        radial.addColorStop(1, '#4c4c54');
+        ctx.fillStyle = radial;
+        ctx.fillRect(0, 0, size, size);
+
+        ctx.save();
+        ctx.translate(size / 2, size / 2);
+        for (let i = 0; i < 240; i++) {
+            const a = (i / 240) * Math.PI * 2;
+            ctx.strokeStyle = i % 3 === 0 ? 'rgba(255,255,255,0.16)' : 'rgba(20,20,24,0.18)';
+            ctx.lineWidth = i % 7 === 0 ? 1.4 : 0.6;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(Math.cos(a) * size, Math.sin(a) * size);
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        const highlight = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, 42);
+        highlight.addColorStop(0, 'rgba(255,255,255,0.42)');
+        highlight.addColorStop(0.4, 'rgba(255,255,255,0.12)');
+        highlight.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = highlight;
+        ctx.fillRect(0, 0, size, size);
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.needsUpdate = true;
+        return tex;
+    }
+
+    function buildScene() {
+        if (!canvas || typeof THREE === 'undefined' || reduceMotion) return false;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(38, overlay.clientWidth / overlay.clientHeight, 0.1, 100);
+        camera.position.set(0, 0.08, 7.4);
+
+        renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: true,
+            powerPreference: 'high-performance'
+        });
+        renderer.setSize(overlay.clientWidth, overlay.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+
+        knobGroup = new THREE.Group();
+        knobGroup.rotation.x = 0.22;
+        knobGroup.scale.set(0.86, 0.86, 0.86);
+        scene.add(knobGroup);
+
+        const metalMap = createBrushedMetalTexture();
+        const knobGeo = new THREE.CylinderGeometry(1.12, 1.18, 0.42, 72);
+        const knobMat = new THREE.MeshStandardMaterial({
+            map: metalMap,
+            metalness: 0.42,
+            roughness: 0.38,
+            color: 0xd5d5dc
+        });
+        const knob = new THREE.Mesh(knobGeo, knobMat);
+        knob.rotation.x = Math.PI / 2;
+        knobGroup.add(knob);
+
+        const capGeo = new THREE.CircleGeometry(1.08, 72);
+        const capMat = new THREE.MeshStandardMaterial({
+            map: metalMap,
+            metalness: 0.38,
+            roughness: 0.32,
+            color: 0xe4e4ea
+        });
+        const cap = new THREE.Mesh(capGeo, capMat);
+        cap.position.z = 0.22;
+        knobGroup.add(cap);
+
+        const bezelGeo = new THREE.TorusGeometry(1.78, 0.11, 18, 96);
+        const bezelMat = new THREE.MeshStandardMaterial({
+            color: 0x161410,
+            metalness: 0.35,
+            roughness: 0.55
+        });
+        const bezel = new THREE.Mesh(bezelGeo, bezelMat);
+        bezel.position.z = 0.02;
+        knobGroup.add(bezel);
+
+        const trackGeo = new THREE.TorusGeometry(1.78, 0.055, 12, 96);
+        const trackMat = new THREE.MeshStandardMaterial({
+            color: 0x1c1912,
+            metalness: 0.25,
+            roughness: 0.7,
+            emissive: 0x000000,
+            emissiveIntensity: 0
+        });
+        const track = new THREE.Mesh(trackGeo, trackMat);
+        track.position.z = 0.08;
+        knobGroup.add(track);
+
+        const ledCount = 40;
+        const litMat = new THREE.MeshStandardMaterial({
+            color: 0xffd45a,
+            emissive: 0xd4af37,
+            emissiveIntensity: 0.95,
+            metalness: 0.15,
+            roughness: 0.4
+        });
+        const dimMat = new THREE.MeshStandardMaterial({
+            color: 0x2a281f,
+            emissive: 0x000000,
+            emissiveIntensity: 0,
+            metalness: 0.25,
+            roughness: 0.7
+        });
+        const ledGeo = new THREE.BoxGeometry(0.16, 0.09, 0.07);
+
+        for (let i = 0; i < ledCount; i++) {
+            const mesh = new THREE.Mesh(ledGeo, dimMat.clone());
+            mesh.userData.litMat = litMat;
+            mesh.userData.dimMat = mesh.material;
+            const angle = -Math.PI / 2 + (i / ledCount) * Math.PI * 2;
+            const radius = 1.78;
+            mesh.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, 0.14);
+            mesh.rotation.z = angle;
+            knobGroup.add(mesh);
+            ledMeshes.push(mesh);
+        }
+
+        const tickMat = new THREE.MeshStandardMaterial({
+            color: 0x6a6458,
+            metalness: 0.6,
+            roughness: 0.4
+        });
+        const tickCount = 48;
+        for (let i = 0; i < tickCount; i++) {
+            const isMajor = i % 12 === 0;
+            const isMid = i % 4 === 0;
+            const len = isMajor ? 0.38 : isMid ? 0.22 : 0.12;
+            const tickGeo = new THREE.BoxGeometry(isMajor ? 0.018 : 0.01, len, 0.01);
+            const tick = new THREE.Mesh(tickGeo, tickMat);
+            const angle = -Math.PI / 2 + (i / tickCount) * Math.PI * 2;
+            const r = 2.18 + len / 2;
+            tick.position.set(Math.cos(angle) * r, Math.sin(angle) * r, 0.05);
+            tick.rotation.z = angle - Math.PI / 2;
+            knobGroup.add(tick);
+        }
+
+        scene.add(new THREE.AmbientLight(0xf2efe6, 1.05));
+        const keyLight = new THREE.DirectionalLight(0xffffff, 0.85);
+        keyLight.position.set(1.2, 2.4, 6);
+        scene.add(keyLight);
+        const goldLight = new THREE.PointLight(0xf5e29f, 1.8, 40);
+        goldLight.position.set(2.4, 2.8, 5);
+        scene.add(goldLight);
+        const rimLight = new THREE.PointLight(0x9bb4d4, 1.1, 30);
+        rimLight.position.set(-4, -1.2, 4);
+        scene.add(rimLight);
+
+        const clock = new THREE.Clock();
+
+        function onResize() {
+            if (!renderer || sceneDisposed) return;
+            camera.aspect = overlay.clientWidth / overlay.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(overlay.clientWidth, overlay.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        }
+        window.addEventListener('resize', onResize);
+
+        function animateScene() {
+            if (sceneDisposed) return;
+            sceneRafId = requestAnimationFrame(animateScene);
+            const t = clock.getElapsedTime();
+            knobGroup.rotation.y = Math.sin(t * 0.55) * 0.12;
+            knobGroup.rotation.x = 0.22 + Math.cos(t * 0.4) * 0.05;
+            renderer.render(scene, camera);
+        }
+        animateScene();
+
+        overlay._disposeLoaderScene = () => {
+            sceneDisposed = true;
+            cancelAnimationFrame(sceneRafId);
+            window.removeEventListener('resize', onResize);
+            ledMeshes.forEach((m) => {
+                m.geometry.dispose();
+                if (m.material && m.material.dispose) m.material.dispose();
+            });
+            scene.traverse((obj) => {
+                if (obj.geometry) obj.geometry.dispose();
+                if (obj.material) {
+                    if (Array.isArray(obj.material)) obj.material.forEach((m) => m.dispose());
+                    else obj.material.dispose();
+                }
+            });
+            metalMap.dispose();
+            renderer.dispose();
+            renderer = null;
+        };
+
+        return true;
+    }
+
+    function updateLeds(progress) {
+        if (!ledMeshes.length) return;
+        const litCount = Math.round((progress / 100) * ledMeshes.length);
+        ledMeshes.forEach((mesh, i) => {
+            const shouldLit = i < litCount;
+            const nextMat = shouldLit ? mesh.userData.litMat : mesh.userData.dimMat;
+            if (mesh.material !== nextMat) mesh.material = nextMat;
+        });
+    }
+
+    function revealPage() {
+        if (finished) return;
+        finished = true;
+        visualProgress = 100;
+        if (percentEl) percentEl.textContent = '100%';
+        updateLeds(100);
+
+        overlay.classList.add('is-done');
+        overlay.setAttribute('aria-busy', 'false');
+        document.body.classList.remove('is-loading');
+
+        window.setTimeout(() => {
+            if (typeof overlay._disposeLoaderScene === 'function') {
+                overlay._disposeLoaderScene();
+            }
+            overlay.remove();
+        }, 800);
+    }
+
+    function tick() {
+        if (finished) return;
+        progressRafId = requestAnimationFrame(tick);
+
+        const ease = pageReady ? 0.085 : 0.045;
+        visualProgress += (targetProgress - visualProgress) * ease;
+        if (pageReady && visualProgress > 99.2) visualProgress = 100;
+
+        const shown = Math.floor(visualProgress);
+        if (percentEl) percentEl.textContent = shown + '%';
+        updateLeds(visualProgress);
+
+        const elapsed = performance.now() - startedAt;
+        const minMet = elapsed >= minDisplayMs;
+        if (pageReady && visualProgress >= 100 && minMet) {
+            cancelAnimationFrame(progressRafId);
+            revealPage();
+            return;
+        }
+        if (elapsed >= hardTimeoutMs) {
+            targetProgress = 100;
+            pageReady = true;
+            cancelAnimationFrame(progressRafId);
+            revealPage();
+        }
+    }
+
+    try {
+        buildScene();
+    } catch (err) {
+        console.warn('3D loader scene unavailable, continuing with progress overlay.', err);
+    }
+    tick();
+}
 
 /* ==========================================================================
    1. THREE.JS 3D LUXURY WEBGL CENTERPIECE
